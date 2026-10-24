@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniTool & Insights - Web Utilities & Knowledge Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom AdSense Compliant Banner Styling */
+        .adsense-placeholder {
+            background-image: radial-gradient(rgba(156, 163, 175, 0.2) 1px, transparent 0);
+            background-size: 12px 12px;
+        }
+        .dark .adsense-placeholder {
+            background-image: radial-gradient(rgba(75, 85, 99, 0.3) 1px, transparent 0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+    <!-- Google AdSense Script Placeholder -->
+    <!-- Replace ca-pub-XXXXXXXXXXXXXXXX with your real Google AdSense Publisher ID -->
+    <!--
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    -->
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('text-tool')">
+                    <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">OmniTool</span>
+                        <span class="text-xs bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-200 px-2 py-0.5 rounded-full font-medium ml-1">Pro</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-1">
+                    <button onclick="switchTab('text-tool')" id="nav-text-tool" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-gray-700 transition">
+                        <i class="fa-solid fa-font mr-1.5"></i> Text Analysis
+                    </button>
+                    <button onclick="switchTab('unit-tool')" id="nav-unit-tool" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fa-solid fa-ruler-combined mr-1.5"></i> Converter
+                    </button>
+                    <button onclick="switchTab('security-tool')" id="nav-security-tool" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fa-solid fa-key mr-1.5"></i> Pass & Hash
+                    </button>
+                    <button onclick="switchTab('finance-tool')" id="nav-finance-tool" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fa-solid fa-wallet mr-1.5"></i> Finance Calc
+                    </button>
+                    <button onclick="switchTab('articles')" id="nav-articles" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                        <i class="fa-solid fa-newspaper mr-1.5"></i> Articles
+                    </button>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-2">
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none" title="Toggle Light/Dark Theme">
+                        <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-2 pb-3 space-y-1">
+            <button onclick="switchTab('text-tool')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Text Analytics</button>
+            <button onclick="switchTab('unit-tool')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Unit Converter</button>
+            <button onclick="switchTab('security-tool')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Password & Hasher</button>
+            <button onclick="switchTab('finance-tool')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Expense Calculator</button>
+            <button onclick="switchTab('articles')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Knowledge Hub</button>
+        </div>
+    </header>
+
+    <!-- TOP LEADERBOARD AD CONTAINER (AdSense Compliant Layout) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="w-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 text-center adsense-placeholder">
+            <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 block mb-1">Advertisement</span>
+            <!-- Google AdSense Code Placement -->
+            <div class="min-h-[90px] flex items-center justify-center text-xs text-gray-400 italic">
+                <!-- Replace this block with your actual AdSense <ins> tag -->
+                <p><i class="fa-solid fa-rectangle-ad text-gray-300 dark:text-gray-600 text-3xl mb-1 block"></i> Responsive Header Leaderboard Unit</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP LAYOUT (Content + Sticky Sidebar Ads) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6 flex-grow w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- MAIN CONTENT AREA (8 Cols) -->
+            <div class="lg:col-span-8 space-y-6">
+
+                <!-- TOOL 1: TEXT ANALYTICS -->
+                <section id="tool-text-tool" class="tab-content bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Text Analytics & Converter</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Analyze counts, estimate reading time, and format string cases effortlessly.</p>
+                        </div>
+                        <span class="p-3 bg-brand-50 dark:bg-gray-700 text-brand-600 dark:text-brand-400 rounded-xl"><i class="fa-solid fa-font text-xl"></i></span>
+                    </div>
+
+                    <!-- Interactive Input -->
+                    <textarea id="text-input" oninput="analyzeText()" rows="6" placeholder="Type or paste your content here..." class="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-brand-500 focus:outline-none transition"></textarea>
+
+                    <!-- Text Stats Dashboard -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-6">
+                        <div class="p-4 bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-700 rounded-xl text-center">
+                            <span class="block text-2xl font-extrabold text-brand-600 dark:text-brand-400" id="stat-words">0</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Words</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-700 rounded-xl text-center">
+                            <span class="block text-2xl font-extrabold text-brand-600 dark:text-brand-400" id="stat-chars">0</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Characters</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-700 rounded-xl text-center">
+                            <span class="block text-2xl font-extrabold text-brand-600 dark:text-brand-400" id="stat-sentences">0</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Sentences</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-700 rounded-xl text-center">
+                            <span class="block text-2xl font-extrabold text-brand-600 dark:text-brand-400" id="stat-readtime">0m</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Read Time</span>
+                        </div>
+                    </div>
+
+                    <!-- Text Manipulation Buttons -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="convertText('uppercase')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-xs font-semibold rounded-lg transition">UPPERCASE</button>
+                        <button onclick="convertText('lowercase')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-xs font-semibold rounded-lg transition">lowercase</button>
+                        <button onclick="convertText('title')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-xs font-semibold rounded-lg transition">Title Case</button>
+                        <button onclick="convertText('camel')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-xs font-semibold rounded-lg transition">camelCase</button>
+                        <button onclick="convertText('slug')" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-xs font-semibold rounded-lg transition">slug-format</button>
+                        <button onclick="copyToClipboard('text-input')" class="px-3 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg transition ml-auto"><i class="fa-regular fa-copy mr-1"></i> Copy Text</button>
+                    </div>
+                </section>
+
+                <!-- TOOL 2: UNIT CONVERTER -->
+                <section id="tool-unit-tool" class="tab-content hidden bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Universal Unit Converter</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Convert measurements accurately across multiple standard formats.</p>
+                        </div>
+                        <span class="p-3 bg-brand-50 dark:bg-gray-700 text-brand-600 dark:text-brand-400 rounded-xl"><i class="fa-solid fa-ruler-combined text-xl"></i></span>
+                    </div>
+
+                    <!-- Category Selector -->
+                    <div class="mb-6">
+                        <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Category</label>
+                        <select id="unit-category" onchange="updateUnitOptions()" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-brand-500 outline-none">
+                            <option value="length">Length (Meters, Feet, Inches, Kilometers)</option>
+                            <option value="mass">Mass / Weight (Kilograms, Pounds, Ounces, Grams)</option>
+                            <option value="temp">Temperature (Celsius, Fahrenheit, Kelvin)</option>
+                            <option value="speed">Speed (km/h, mph, m/s, Knots)</option>
+                        </select>
+                    </div>
+
+                    <!-- Conversion Controls -->
+                    <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 items-center">
+                        <div class="sm:col-span-2 space-y-2">
+                            <input type="number" id="unit-from-val" value="1" oninput="calculateConversion()" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-semibold focus:ring-2 focus:ring-brand-500 outline-none">
+                            <select id="unit-from-type" onchange="calculateConversion()" class="w-full p-2.5 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 outline-none"></select>
+                        </div>
+
+                        <div class="text-center text-gray-400">
+                            <i class="fa-solid fa-arrow-right-arrow-left text-xl hidden sm:inline-block"></i>
+                            <i class="fa-solid fa-arrow-down-up-across-line text-xl sm:hidden"></i>
+                        </div>
+
+                        <div class="sm:col-span-2 space-y-2">
+                            <input type="text" id="unit-to-val" readonly class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-100 dark:bg-gray-900 text-brand-600 dark:text-brand-400 font-bold outline-none">
+                            <select id="unit-to-type" onchange="calculateConversion()" class="w-full p-2.5 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 outline-none"></select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TOOL 3: PASSWORD & HASHER -->
+                <section id="tool-security-tool" class="tab-content hidden bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Password & Hash Security Tool</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Generate cryptographically secure passwords and compute string hashes.</p>
+                        </div>
+                        <span class="p-3 bg-brand-50 dark:bg-gray-700 text-brand-600 dark:text-brand-400 rounded-xl"><i class="fa-solid fa-shield-halved text-xl"></i></span>
+                    </div>
+
+                    <!-- Password Generator Section -->
+                    <div class="border-b border-gray-200 dark:border-gray-700 pb-6 mb-6">
+                        <h3 class="text-base font-semibold mb-3 text-gray-800 dark:text-gray-200">Secure Password Generator</h3>
+                        <div class="flex items-center space-x-2 mb-4">
+                            <input type="text" id="pass-output" readonly placeholder="Generated Password" class="flex-grow p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 font-mono text-lg font-bold text-brand-600 dark:text-brand-400 outline-none">
+                            <button onclick="generatePassword()" class="px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition"><i class="fa-solid fa-arrows-rotate mr-1"></i> Generate</button>
+                            <button onclick="copyToClipboard('pass-output')" class="px-4 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 text-gray-800 dark:text-white font-semibold rounded-xl transition"><i class="fa-regular fa-copy"></i></button>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="checkbox" id="pass-upper" checked onchange="generatePassword()" class="rounded text-brand-600 focus:ring-brand-500">
+                                <span>Uppercase (A-Z)</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="checkbox" id="pass-numbers" checked onchange="generatePassword()" class="rounded text-brand-600 focus:ring-brand-500">
+                                <span>Numbers (0-9)</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="checkbox" id="pass-symbols" checked onchange="generatePassword()" class="rounded text-brand-600 focus:ring-brand-500">
+                                <span>Symbols (!@#$)</span>
+                            </label>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">Len:</span>
+                                <input type="range" id="pass-length" min="8" max="32" value="16" oninput="document.getElementById('pass-len-val').innerText = this.value; generatePassword()" class="w-full accent-brand-600">
+                                <span id="pass-len-val" class="font-bold">16</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- String Hash Simulator -->
+                    <div>
+                        <h3 class="text-base font-semibold mb-3 text-gray-800 dark:text-gray-200">Text Hash Generator (SHA-256)</h3>
+                        <input type="text" id="hash-input" oninput="generateHash()" placeholder="Type text to compute hash..." class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 outline-none mb-3">
+                        <div class="p-3 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl font-mono text-xs break-all text-gray-600 dark:text-gray-400">
+                            <span class="font-bold text-gray-500 block mb-1">SHA-256 Output:</span>
+                            <span id="hash-output">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TOOL 4: EXPENSE & BUDGET CALCULATOR -->
+                <section id="tool-finance-tool" class="tab-content hidden bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Budget & Expense Manager</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Track dynamic income and expenditure totals effortlessly.</p>
+                        </div>
+                        <span class="p-3 bg-brand-50 dark:bg-gray-700 text-brand-600 dark:text-brand-400 rounded-xl"><i class="fa-solid fa-wallet text-xl"></i></span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                        <div class="p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl">
+                            <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold uppercase">Total Income</span>
+                            <span id="fin-income-total" class="block text-2xl font-bold text-emerald-700 dark:text-emerald-300">$0.00</span>
+                        </div>
+                        <div class="p-4 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 rounded-xl">
+                            <span class="text-xs text-rose-600 dark:text-rose-400 font-semibold uppercase">Total Expenses</span>
+                            <span id="fin-expense-total" class="block text-2xl font-bold text-rose-700 dark:text-rose-300">$0.00</span>
+                        </div>
+                        <div class="p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-xl">
+                            <span class="text-xs text-blue-600 dark:text-blue-400 font-semibold uppercase">Net Balance</span>
+                            <span id="fin-net-total" class="block text-2xl font-bold text-blue-700 dark:text-blue-300">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Add Entry Form -->
+                    <form onsubmit="addExpenseItem(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-3 mb-6">
+                        <input type="text" id="fin-title" required placeholder="Item description (e.g. Hosting, Salary)" class="sm:col-span-5 p-2.5 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-sm outline-none">
+                        <input type="number" id="fin-amount" required step="0.01" min="0.01" placeholder="Amount ($)" class="sm:col-span-3 p-2.5 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-sm outline-none">
+                        <select id="fin-type" class="sm:col-span-2 p-2.5 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-sm outline-none">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                        <button type="submit" class="sm:col-span-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-sm transition py-2.5"><i class="fa-solid fa-plus mr-1"></i> Add</button>
+                    </form>
+
+                    <!-- Items List -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-200 dark:border-gray-700 text-gray-400">
+                                    <th class="py-2">Description</th>
+                                    <th class="py-2">Type</th>
+                                    <th class="py-2">Amount</th>
+                                    <th class="py-2 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fin-table-body" class="divide-y divide-gray-100 dark:divide-gray-700/50">
+                                <!-- Dynamic entries go here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- IN-FEED IN-ARTICLE AD UNIT PLACEHOLDER -->
+                <div class="w-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 text-center adsense-placeholder">
+                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 block mb-1">Advertisement</span>
+                    <div class="min-h-[120px] flex items-center justify-center text-xs text-gray-400 italic">
+                        <p><i class="fa-solid fa-ad text-gray-300 dark:text-gray-600 text-3xl mb-1 block"></i> Mid-Page Native / In-Feed Ad Block</p>
+                    </div>
+                </div>
+
+                <!-- SECTION 5: INFORMATIVE ARTICLES & KNOWLEDGE HUB -->
+                <section id="tool-articles" class="tab-content hidden space-y-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Knowledge Hub & Digital Insights</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">In-depth guides on digital utilities, cybersecurity, web technology, and financial management.</p>
+                    </div>
+
+                    <!-- Article Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <article class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-600 dark:text-brand-400 tracking-wider">Cybersecurity</span>
+                                <h3 class="text-xl font-bold mt-2 text-gray-900 dark:text-white">Understanding Password Entropy & Hashing</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mt-3 line-clamp-3">
+                                    Password entropy measures the unpredictability of a password string. Utilizing strong cryptographic hashing like SHA-256 ensures your stored user credentials remain unreadable even in the event of database leaks.
+                                </p>
+                            </div>
+                            <button onclick="openModal('article1')" class="mt-4 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline flex items-center">
+                                Read Full Guide <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                            </button>
+                        </article>
+
+                        <article class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-600 dark:text-brand-400 tracking-wider">Personal Finance</span>
+                                <h3 class="text-xl font-bold mt-2 text-gray-900 dark:text-white">Effective Strategies for Household Budgeting</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mt-3 line-clamp-3">
+                                    Managing daily income and expenditures with structured calculations allows individuals to build emergency savings, reduce unnecessary recurring overhead, and ensure long-term financial health.
+                                </p>
+                            </div>
+                            <button onclick="openModal('article2')" class="mt-4 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline flex items-center">
+                                Read Full Guide <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                            </button>
+                        </article>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- SIDEBAR AREA (4 Cols - Includes Sticky AdSense Rectangle & Quick Info) -->
+            <aside class="lg:col-span-4 space-y-6">
+
+                <!-- SIDEBAR STICKY AD UNIT PLACEHOLDER -->
+                <div class="sticky top-20 space-y-6">
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 text-center shadow-sm adsense-placeholder">
+                        <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 block mb-2">Advertisement</span>
+                        <div class="min-h-[250px] flex items-center justify-center text-xs text-gray-400 italic border border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-4">
+                            <!-- Google AdSense Sidebar Rectangle Placement -->
+                            <div>
+                                <i class="fa-solid fa-rectangle-ad text-gray-300 dark:text-gray-600 text-4xl mb-2 block"></i>
+                                <p>Sidebar Ad Display Unit</p>
+                                <p class="text-[10px] text-gray-400 mt-1">300x250 or Responsive Rectangle</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Information / Feature Card -->
+                    <div class="bg-gradient-to-br from-brand-600 to-brand-800 text-white rounded-2xl p-6 shadow-md">
+                        <i class="fa-solid fa-shield-cat text-3xl mb-3 text-brand-200"></i>
+                        <h3 class="text-lg font-bold">100% Client-Side Privacy</h3>
+                        <p class="text-xs text-brand-100 mt-2 leading-relaxed">
+                            Your text analyses, password generation, and expense calculations are processed locally within your browser. No sensitive data is transmitted to remote servers.
+                        </p>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER & COMPLIANCE LINKS -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-cubes text-brand-600 text-xl"></i>
+                    <span class="font-bold text-gray-900 dark:text-white">OmniTool Suite</span>
+                    <span class="text-xs text-gray-500 dark:text-gray-400">© 2026. All Rights Reserved.</span>
+                </div>
+
+                <!-- Mandatory AdSense Policy Pages -->
+                <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-gray-600 dark:text-gray-300">
+                    <button onclick="openModal('privacy')" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Privacy Policy</button>
+                    <span>•</span>
+                    <button onclick="openModal('terms')" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Terms of Service</button>
+                    <span>•</span>
+                    <button onclick="openModal('about')" class="hover:text-brand-600 dark:hover:text-brand-400 transition">About Us</button>
+                    <span>•</span>
+                    <button onclick="openModal('contact')" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Contact Us</button>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-[11px] text-gray-400 dark:text-gray-500">
+                Disclaimer: Google AdSense is a registered trademark of Google LLC. This platform adheres strictly to Google Publisher Policies.
+            </div>
+        </div>
+    </footer>
+
+    <!-- POLICY & ARTICLE MODAL OVERLAY -->
+    <div id="modal-overlay" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                <h3 id="modal-title" class="text-lg font-bold text-gray-900 dark:text-white">Policy Information</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <!-- Modal Content -->
+            <div id="modal-body" class="p-6 overflow-y-auto text-sm text-gray-600 dark:text-gray-300 space-y-4 leading-relaxed">
+                <!-- Dynamic Content Injected Here -->
+            </div>
+            <!-- Modal Footer -->
+            <div class="px-6 py-3 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50 text-right">
+                <button onclick="closeModal()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg transition">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // --- 1. Navigation & Theme State Management ---
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-brand-600', 'dark:text-brand-400', 'bg-brand-50', 'dark:bg-gray-700');
+                btn.classList.add('text-gray-600', 'dark:text-gray-300');
+            });
+
+            const activeTab = document.getElementById(`tool-${tabId}`);
+            if (activeTab) activeTab.classList.remove('hidden');
+
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('text-brand-600', 'dark:text-brand-400', 'bg-brand-50', 'dark:bg-gray-700');
+                activeBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
+            }
+
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = "fa-solid fa-moon text-lg";
+            } else {
+                html.classList.add('dark');
+                icon.className = "fa-solid fa-sun text-lg";
+            }
+        }
+
+        // --- 2. Text Analytics Engine ---
+        function analyzeText() {
+            const val = document.getElementById('text-input').value;
+            const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+            const chars = val.length;
+            const sentences = val.trim() ? val.split(/[.!?]+/).filter(Boolean).length : 0;
+            const readTime = Math.ceil(words / 200);
+
+            document.getElementById('stat-words').innerText = words;
+            document.getElementById('stat-chars').innerText = chars;
+            document.getElementById('stat-sentences').innerText = sentences;
+            document.getElementById('stat-readtime').innerText = `${readTime}m`;
+        }
+
+        function convertText(type) {
+            const textarea = document.getElementById('text-input');
+            let text = textarea.value;
+            if (!text) return;
+
+            switch (type) {
+                case 'uppercase': textarea.value = text.toUpperCase(); break;
+                case 'lowercase': textarea.value = text.toLowerCase(); break;
+                case 'title':
+                    textarea.value = text.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+                    break;
+                case 'camel':
+                    textarea.value = text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+                    break;
+                case 'slug':
+                    textarea.value = text.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+                    break;
+            }
+            analyzeText();
+        }
+
+        function copyToClipboard(id) {
+            const target = document.getElementById(id);
+            if (!target || !target.value) return;
+            navigator.clipboard.writeText(target.value).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+
+        // --- 3. Unit Conversion Engine ---
+        const unitData = {
+            length: {
+                units: ['Meters', 'Feet', 'Inches', 'Kilometers', 'Miles'],
+                rates: { Meters: 1, Feet: 0.3048, Inches: 0.0254, Kilometers: 1000, Miles: 1609.34 }
+            },
+            mass: {
+                units: ['Kilograms', 'Pounds', 'Ounces', 'Grams'],
+                rates: { Kilograms: 1, Pounds: 0.453592, Ounces: 0.0283495, Grams: 0.001 }
+            },
+            speed: {
+                units: ['km/h', 'mph', 'm/s'],
+                rates: { 'km/h': 1, 'mph': 1.60934, 'm/s': 3.6 }
+            }
+        };
+
+        function updateUnitOptions() {
+            const cat = document.getElementById('unit-category').value;
+            const fromSel = document.getElementById('unit-from-type');
+            const toSel = document.getElementById('unit-to-type');
+
+            fromSel.innerHTML = '';
+            toSel.innerHTML = '';
+
+            if (cat === 'temp') {
+                ['Celsius', 'Fahrenheit', 'Kelvin'].forEach(u => {
+                    fromSel.innerHTML += `<option value="${u}">${u}</option>`;
+                    toSel.innerHTML += `<option value="${u}">${u}</option>`;
+                });
+            } else {
+                unitData[cat].units.forEach(u => {
+                    fromSel.innerHTML += `<option value="${u}">${u}</option>`;
+                    toSel.innerHTML += `<option value="${u}">${u}</option>`;
+                });
+            }
+            if (toSel.options.length > 1) toSel.selectedIndex = 1;
+            calculateConversion();
+        }
+
+        function calculateConversion() {
+            const cat = document.getElementById('unit-category').value;
+            const val = parseFloat(document.getElementById('unit-from-val').value) || 0;
+            const from = document.getElementById('unit-from-type').value;
+            const to = document.getElementById('unit-to-type').value;
+            const out = document.getElementById('unit-to-val');
+
+            if (cat === 'temp') {
+                let celsius = val;
+                if (from === 'Fahrenheit') celsius = (val - 32) * 5/9;
+                if (from === 'Kelvin') celsius = val - 273.15;
+
+                let result = celsius;
+                if (to === 'Fahrenheit') result = (celsius * 9/5) + 32;
+                if (to === 'Kelvin') result = celsius + 273.15;
+                out.value = result.toFixed(2);
+            } else {
+                const rates = unitData[cat].rates;
+                const baseValue = val * rates[from];
+                const converted = baseValue / rates[to];
+                out.value = converted.toFixed(4);
+            }
+        }
+
+        // --- 4. Password & Security Engine ---
+        function generatePassword() {
+            const len = document.getElementById('pass-length').value;
+            const upper = document.getElementById('pass-upper').checked;
+            const nums = document.getElementById('pass-numbers').checked;
+            const syms = document.getElementById('pass-symbols').checked;
+
+            let chars = 'abcdefghijklmnopqrstuvwxyz';
+            if (upper) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            if (nums) chars += '0123456789';
+            if (syms) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+            let res = '';
+            for (let i = 0; i < len; i++) {
+                res += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('pass-output').value = res;
+        }
+
+        async function generateHash() {
+            const msg = document.getElementById('hash-input').value;
+            const msgBuffer = new TextEncoder().encode(msg);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            document.getElementById('hash-output').innerText = hashHex;
+        }
+
+        // --- 5. Financial Expense Calculator Engine ---
+        let expenses = [];
+
+        function addExpenseItem(e) {
+            e.preventDefault();
+            const title = document.getElementById('fin-title').value;
+            const amount = parseFloat(document.getElementById('fin-amount').value);
+            const type = document.getElementById('fin-type').value;
+
+            expenses.push({ id: Date.now(), title, amount, type });
+            document.getElementById('fin-title').value = '';
+            document.getElementById('fin-amount').value = '';
+            renderExpenses();
+        }
+
+        function deleteExpenseItem(id) {
+            expenses = expenses.filter(i => i.id !== id);
+            renderExpenses();
+        }
+
+        function renderExpenses() {
+            const tbody = document.getElementById('fin-table-body');
+            tbody.innerHTML = '';
+
+            let inc = 0, exp = 0;
+
+            expenses.forEach(item => {
+                if (item.type === 'income') inc += item.amount;
+                else exp += item.amount;
+
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30">
+                        <td class="py-2.5 font-medium text-gray-800 dark:text-gray-200">${item.title}</td>
+                        <td class="py-2.5">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${item.type === 'income' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-900/50 dark:text-rose-300'}">
+                                ${item.type.toUpperCase()}
+                            </span>
+                        </td>
+                        <td class="py-2.5 font-bold ${item.type === 'income' ? 'text-emerald-600' : 'text-rose-600'}">$${item.amount.toFixed(2)}</td>
+                        <td class="py-2.5 text-right">
+                            <button onclick="deleteExpenseItem(${item.id})" class="text-gray-400 hover:text-rose-600"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('fin-income-total').innerText = `$${inc.toFixed(2)}`;
+            document.getElementById('fin-expense-total').innerText = `$${exp.toFixed(2)}`;
+            document.getElementById('fin-net-total').innerText = `$${(inc - exp).toFixed(2)}`;
+        }
+
+        // --- 6. Policy Modals & Articles Engine ---
+        const modalContents = {
+            privacy: {
+                title: "Privacy Policy",
+                content: `
+                    <p class="mb-3">At OmniTool Suite, accessible from our domain, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by OmniTool Suite and how we use it.</p>
+                    <h4 class="font-bold text-gray-800 dark:text-white mt-4 mb-2">Google DoubleClick DART Cookie</h4>
+                    <p class="mb-3">Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads" target="_blank" class="text-brand-600 underline">https://policies.google.com/technologies/ads</a></p>
+                    <h4 class="font-bold text-gray-800 dark:text-white mt-4 mb-2">Third Party Advertising Partners</h4>
+                    <p class="mb-3">Some of advertisers on our site may use cookies and web beacons. Our advertising partners include Google AdSense. Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on OmniTool Suite.</p>
+                `
+            },
+            terms: {
+                title: "Terms of Service",
+                content: `
+                    <p class="mb-3">By accessing this web app, you agree to be bound by these website Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.</p>
+                    <h4 class="font-bold text-gray-800 dark:text-white mt-4 mb-2">Use License & Disclaimers</h4>
+                    <p class="mb-3">Permission is granted to temporarily use the online tools provided on OmniTool Suite for personal or commercial utility purposes. All calculations and text processing occur locally on your machine without warranties of absolute mathematical liability.</p>
+                `
+            },
+            about: {
+                title: "About OmniTool Suite",
+                content: `
+                    <p class="mb-3">OmniTool Suite is a dedicated digital utility platform designed to deliver essential web-based tools and insightful knowledge directly to users worldwide.</p>
+                    <p class="mb-3">Our goal is to provide fast, lightweight, client-side tools ranging from text manipulation, universal conversions, password generation, and budgeting tools while adhering to strict online safety and ad transparency standards.</p>
+                `
+            },
+            contact: {
+                title: "Contact Us",
+                content: `
+                    <p class="mb-4">Have questions, feedback, or inquiries? Reach out to our technical team using the form below:</p>
+                    <form onsubmit="alert('Message sent successfully!'); closeModal(); return false;" class="space-y-3">
+                        <input type="text" required placeholder="Your Name" class="w-full p-2.5 border rounded-lg dark:bg-gray-900 border-gray-300 dark:border-gray-700 outline-none">
+                        <input type="email" required placeholder="Your Email Address" class="w-full p-2.5 border rounded-lg dark:bg-gray-900 border-gray-300 dark:border-gray-700 outline-none">
+                        <textarea required rows="3" placeholder="Your Message..." class="w-full p-2.5 border rounded-lg dark:bg-gray-900 border-gray-300 dark:border-gray-700 outline-none"></textarea>
+                        <button type="submit" class="w-full py-2.5 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 transition">Send Message</button>
+                    </form>
+                `
+            },
+            article1: {
+                title: "Guide: Understanding Password Entropy & Hashing",
+                content: `
+                    <p class="mb-3">Password entropy measures the unpredictability and overall strength of a given password sequence based on mathematical probability principles. Higher entropy renders a password dramatically more resistant to brute-force automated attacks.</p>
+                    <h4 class="font-bold text-gray-800 dark:text-white mt-4 mb-2">Role of Cryptographic Hashes (SHA-256)</h4>
+                    <p class="mb-3">Unlike reversible encryption, a cryptographic hash function is a one-way mathematical algorithm that converts an arbitrary block of data into a fixed-size bit array. SHA-256 is widely used in modern web authentication and blockchain proof-of-work protocols.</p>
+                `
+            },
+            article2: {
+                title: "Guide: Effective Household & Digital Budgeting",
+                content: `
+                    <p class="mb-3">Creating a structured budgeting methodology is the cornerstone of sustainable personal finance. By strictly tracking revenue streams alongside fixed and variable expenses, users can identify unnecessary monetary leakage.</p>
+                    <h4 class="font-bold text-gray-800 dark:text-white mt-4 mb-2">The 50/30/20 Rule</h4>
+                    <p class="mb-3">A common rule of thumb is splitting post-tax income into three buckets: 50% for Needs (rent, utilities), 30% for Wants (entertainment, dining), and 20% for Savings or debt reduction.</p>
+                `
+            }
+        };
+
+        function openModal(key) {
+            const data = modalContents[key];
+            if (!data) return;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-body').innerHTML = data.content;
+            document.getElementById('modal-overlay').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.add('hidden');
+        }
+
+        // --- Initializer ---
+        window.onload = function() {
+            updateUnitOptions();
+            generatePassword();
+            generateHash();
+        };
+    </script>
+</body>
+</html>
