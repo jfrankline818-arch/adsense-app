@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OmniTool & Insights - Web Utilities & Knowledge Hub</title>
+    <title>OmniTool Pro - Web Utilities & Knowledge Hub</title>
+    
+    <!-- Google AdSense Master Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4321543724878495" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-4321543724878495">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,21 +34,13 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .adsense-placeholder {
-            background-image: radial-gradient(rgba(156, 163, 175, 0.2) 1px, transparent 0);
-            background-size: 12px 12px;
-        }
-        .dark .adsense-placeholder {
-            background-image: radial-gradient(rgba(75, 85, 99, 0.3) 1px, transparent 0);
+        .adsense-container {
+            background-color: rgba(156, 163, 175, 0.05);
         }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
 
-    <!-- Google AdSense Master Script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4321543724878495" crossorigin="anonymous"></script>
-    <meta name="google-adsense-account" content="ca-pub-4321543724878495">
-    
     <!-- HEADER / NAVIGATION -->
     <header class="sticky top-0 z-40 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,9 +66,6 @@
                     </button>
                     <button onclick="switchTab('security-tool')" id="nav-security-tool" class="nav-btn px-3 py-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                         <i class="fa-solid fa-key mr-1"></i> Pass & Hash
-                    </button>
-                    <button onclick="switchTab('finance-tool')" id="nav-finance-tool" class="nav-btn px-3 py-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                        <i class="fa-solid fa-wallet mr-1"></i> Finance
                     </button>
                     <button onclick="switchTab('about')" id="nav-about" class="nav-btn px-3 py-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                         <i class="fa-solid fa-circle-info mr-1"></i> About
@@ -103,8 +97,7 @@
         <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-2 pb-3 space-y-1">
             <button onclick="switchTab('text-tool')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Text Analytics</button>
             <button onclick="switchTab('unit-tool')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Unit Converter</button>
-            <button onclick="switchTab('security-tool')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Password & Hasher</button>
-            <button onclick="switchTab('finance-tool')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Expense Calculator</button>
+            <button onclick="switchTab('security-tool')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Password Generator</button>
             <button onclick="switchTab('about')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">About Us</button>
             <button onclick="switchTab('privacy')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Privacy Policy</button>
             <button onclick="switchTab('terms')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Terms of Service</button>
@@ -112,11 +105,10 @@
         </div>
     </header>
 
-    <!-- TOP LEADERBOARD AD CONTAINER -->
+    <!-- AD UNIT #1: TOP LEADERBOARD BANNER -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-        <div class="w-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 text-center adsense-placeholder">
-            <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 block mb-1">Advertisement</span>
-            <div class="min-h-[90px] flex items-center justify-center text-xs text-gray-400 italic">
+        <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 text-center adsense-container shadow-sm">
+            <div class="min-h-[90px] flex items-center justify-center text-xs text-gray-400">
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-4321543724878495"
@@ -193,61 +185,65 @@
                         <span class="p-3 bg-brand-50 dark:bg-gray-700 text-brand-600 dark:text-brand-400 rounded-xl"><i class="fa-solid fa-ruler-combined text-xl"></i></span>
                     </div>
 
-                    <div class="mb-6">
-                        <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Category</label>
-                        <select id="unit-category" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-brand-500 outline-none">
-                            <option value="length">Length (Meters, Feet, Inches, Kilometers)</option>
-                            <option value="mass">Mass / Weight (Kilograms, Pounds, Ounces, Grams)</option>
-                            <option value="temp">Temperature (Celsius, Fahrenheit, Kelvin)</option>
-                            <option value="speed">Speed (km/h, mph, m/s, Knots)</option>
-                        </select>
-                    </div>
-
                     <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 items-center">
                         <div class="sm:col-span-2 space-y-2">
-                            <input type="number" id="unit-from-val" value="1" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-semibold focus:ring-2 focus:ring-brand-500 outline-none">
-                            <select id="unit-from-type" class="w-full p-2.5 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 outline-none"></select>
+                            <input type="number" id="unit-from-val" value="1" oninput="convertUnits()" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-semibold focus:ring-2 focus:ring-brand-500 outline-none">
+                            <select id="unit-from-type" onchange="convertUnits()" class="w-full p-2.5 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 outline-none">
+                                <option value="m">Meters (m)</option>
+                                <option value="km">Kilometers (km)</option>
+                                <option value="ft">Feet (ft)</option>
+                                <option value="mi">Miles (mi)</option>
+                            </select>
                         </div>
                         <div class="text-center text-gray-400">
                             <i class="fa-solid fa-arrow-right-arrow-left text-xl hidden sm:inline-block"></i>
                         </div>
                         <div class="sm:col-span-2 space-y-2">
                             <input type="text" id="unit-to-val" readonly class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-100 dark:bg-gray-900 text-brand-600 dark:text-brand-400 font-bold outline-none">
-                            <select id="unit-to-type" class="w-full p-2.5 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 outline-none"></select>
+                            <select id="unit-to-type" onchange="convertUnits()" class="w-full p-2.5 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 outline-none">
+                                <option value="ft">Feet (ft)</option>
+                                <option value="m">Meters (m)</option>
+                                <option value="km">Kilometers (km)</option>
+                                <option value="mi">Miles (mi)</option>
+                            </select>
                         </div>
                     </div>
                 </section>
 
-                <!-- TOOL 3: PASSWORD & HASHER -->
+                <!-- TOOL 3: PASSWORD GENERATOR -->
                 <section id="tool-security-tool" class="tab-content hidden bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
                     <div class="flex items-center justify-between mb-4">
                         <div>
-                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Password & Hash Security Tool</h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Generate cryptographically secure passwords and compute string hashes.</p>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Password Security Tool</h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Generate cryptographically secure randomized passwords.</p>
                         </div>
                         <span class="p-3 bg-brand-50 dark:bg-gray-700 text-brand-600 dark:text-brand-400 rounded-xl"><i class="fa-solid fa-shield-halved text-xl"></i></span>
                     </div>
 
-                    <div class="border-b border-gray-200 dark:border-gray-700 pb-6 mb-6">
+                    <div class="pb-2">
                         <h3 class="text-base font-semibold mb-3 text-gray-800 dark:text-gray-200">Secure Password Generator</h3>
                         <div class="flex items-center space-x-2 mb-4">
-                            <input type="text" id="pass-output" readonly placeholder="Generated Password" class="flex-grow p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 font-mono text-lg font-bold text-brand-600 dark:text-brand-400 outline-none">
+                            <input type="text" id="pass-output" readonly placeholder="Click Generate" class="flex-grow p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 font-mono text-lg font-bold text-brand-600 dark:text-brand-400 outline-none">
                             <button onclick="generatePassword()" class="px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition"><i class="fa-solid fa-arrows-rotate mr-1"></i> Generate</button>
                             <button onclick="copyToClipboard('pass-output')" class="px-4 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 text-gray-800 dark:text-white font-semibold rounded-xl transition"><i class="fa-regular fa-copy"></i></button>
                         </div>
                     </div>
                 </section>
 
-                <!-- TOOL 4: EXPENSE & BUDGET CALCULATOR -->
-                <section id="tool-finance-tool" class="tab-content hidden bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <div>
-                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Budget & Expense Manager</h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Track dynamic income and expenditure totals effortlessly.</p>
-                        </div>
-                        <span class="p-3 bg-brand-50 dark:bg-gray-700 text-brand-600 dark:text-brand-400 rounded-xl"><i class="fa-solid fa-wallet text-xl"></i></span>
+                <!-- AD UNIT #2: MID-PAGE BANNER -->
+                <div class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 text-center adsense-container my-8 shadow-sm">
+                    <div class="min-h-[120px] flex items-center justify-center text-xs text-gray-400">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-4321543724878495"
+                             data-ad-slot="5566778899"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
                     </div>
-                </section>
+                </div>
 
                 <!-- SECTION: ABOUT US -->
                 <section id="tool-about" class="tab-content hidden space-y-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 md:p-8">
@@ -262,17 +258,12 @@
                     <div class="space-y-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white">Who We Are</h3>
                         <p>
-                            OmniTool Suite is a digital platform created to provide accessible, fast, and privacy-first online tools for professionals, creators, students, and web developers. Our utility suite includes real-time text analytics, universal unit converters, cryptographic hash generators, and personal budget calculators—all running directly in your web browser.
+                            OmniTool Suite is a digital platform created to provide accessible, fast, and privacy-first online tools for professionals, creators, students, and web developers. Our utility suite includes real-time text analytics, universal unit converters, and password generators—all running directly in your web browser.
                         </p>
 
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white">Client-Side Privacy & Data Security</h3>
                         <p>
-                            We prioritize user security above all else. Every calculation and data transformation performed on OmniTool Suite is processed entirely on your local machine using modern web standards. No text inputs, sensitive keywords, passwords, or personal financial records are ever collected, transmitted, or saved on our servers.
-                        </p>
-
-                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Publisher & Advertising Transparency</h3>
-                        <p>
-                            To keep our web tools free and universally accessible, OmniTool Suite collaborates with digital advertising partners, including Google AdSense. These vendor partners use cookies to serve relevant advertisements to users based on prior visits across the internet. You can review your personal ad preferences or opt out of personalized advertising by visiting Google's Ad Settings.
+                            We prioritize user security above all else. Every calculation and data transformation performed on OmniTool Suite is processed entirely on your local machine using modern web standards. No text inputs or sensitive credentials are ever collected, transmitted, or saved on our servers.
                         </p>
                     </div>
                 </section>
@@ -290,7 +281,7 @@
                     <div class="space-y-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white">Log Files & Analytics</h3>
                         <p>
-                            Like most standard website servers, OmniTool Suite utilizes log files to monitor general web traffic trends. This information includes internet protocol (IP) addresses, browser types, internet service providers (ISP), referring/exit pages, platform type, and date/time stamps. This data is non-personally identifiable and is strictly used to analyze trends and administer the platform effectively.
+                            Like most standard website servers, OmniTool Suite utilizes log files to monitor general web traffic trends. This information includes IP addresses, browser types, internet service providers (ISP), and date/time stamps strictly used to analyze trends and administer the platform effectively.
                         </p>
 
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white">Cookies and Google AdSense Policies</h3>
@@ -298,7 +289,7 @@
                             Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to your sites and/or other sites on the Internet.
                         </p>
                         <p>
-                            Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" class="text-brand-600 underline">Google Ad Settings</a>. Alternatively, users can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" class="text-brand-600 underline">aboutads.info</a>.
+                            Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" class="text-brand-600 underline">Google Ad Settings</a>.
                         </p>
                     </div>
                 </section>
@@ -321,7 +312,7 @@
 
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white">2. Disclaimer of Warranties</h3>
                         <p>
-                            All tools, calculations, and content provided on OmniTool Suite are provided "as is" without warranty of any kind. While we strive for absolute technical precision in our mathematical converters, cryptographic tools, and analytics, we do not guarantee that the tools are free from minor errors or omissions.
+                            All tools, calculations, and content provided on OmniTool Suite are provided "as is" without warranty of any kind.
                         </p>
                     </div>
                 </section>
@@ -343,7 +334,7 @@
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-500 uppercase mb-1">Email Address</label>
-                            <input type="email" required placeholder="support@example.com" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-sm outline-none">
+                            <input type="email" required placeholder="support@omnitoolpro.com" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-900 text-sm outline-none">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-500 uppercase mb-1">Message</label>
@@ -358,9 +349,8 @@
             <!-- SIDEBAR AREA -->
             <aside class="lg:col-span-4 space-y-6">
                 <div class="sticky top-20 space-y-6">
-                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 text-center shadow-sm adsense-placeholder">
-                        <span class="text-[10px] font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 block mb-2">Advertisement</span>
-                        <div class="min-h-[250px] flex items-center justify-center text-xs text-gray-400 italic border border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-4">
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 text-center shadow-sm adsense-container">
+                        <div class="min-h-[250px] flex items-center justify-center text-xs text-gray-400 border border-dashed border-gray-200 dark:border-gray-700 rounded-xl p-4">
                             <ins class="adsbygoogle"
                                  style="display:block"
                                  data-ad-client="ca-pub-4321543724878495"
@@ -377,7 +367,7 @@
                         <i class="fa-solid fa-shield-cat text-3xl mb-3 text-brand-200"></i>
                         <h3 class="text-lg font-bold">100% Client-Side Privacy</h3>
                         <p class="text-xs text-brand-100 mt-2 leading-relaxed">
-                            Your text analyses, password generation, and expense calculations are processed locally within your browser. No sensitive data is transmitted to remote servers.
+                            Your text analyses, password generation, and unit conversions execute strictly inside your local browser engine. No user data is ever uploaded or stored remotely.
                         </p>
                     </div>
                 </div>
@@ -385,78 +375,112 @@
         </div>
     </main>
 
-    <!-- FOOTER & COMPLIANCE LINKS -->
+    <!-- FOOTER WITH MANDATORY ADSENSE POLICY LINKS -->
     <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-cubes text-brand-600 text-xl"></i>
-                    <span class="font-bold text-gray-900 dark:text-white">OmniTool Suite</span>
+                    <span class="font-bold text-gray-900 dark:text-white">OmniTool Pro</span>
                     <span class="text-xs text-gray-500 dark:text-gray-400">© 2026. All Rights Reserved.</span>
                 </div>
-                <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500">
-                    <a href="#" onclick="switchTab('about')" class="hover:underline">About Us</a>
-                    <a href="#" onclick="switchTab('privacy')" class="hover:underline">Privacy Policy</a>
-                    <a href="#" onclick="switchTab('terms')" class="hover:underline">Terms of Service</a>
-                    <a href="#" onclick="switchTab('contact')" class="hover:underline">Contact Support</a>
+
+                <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-gray-600 dark:text-gray-300">
+                    <button onclick="switchTab('privacy')" class="hover:underline">Privacy Policy</button>
+                    <span>•</span>
+                    <button onclick="switchTab('terms')" class="hover:underline">Terms of Service</button>
+                    <span>•</span>
+                    <button onclick="switchTab('about')" class="hover:underline">About Us</button>
+                    <span>•</span>
+                    <button onclick="switchTab('contact')" class="hover:underline">Contact Support</button>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- UTILITY JAVASCRIPT LOGIC -->
     <script>
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById('tool-' + tabId).classList.remove('hidden');
-            
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('text-brand-600', 'dark:text-brand-400', 'bg-brand-50', 'dark:bg-gray-700');
-                btn.classList.add('text-gray-600', 'dark:text-gray-300');
-            });
-            const activeBtn = document.getElementById('nav-' + tabId);
-            if(activeBtn) {
-                activeBtn.classList.add('text-brand-600', 'dark:text-brand-400', 'bg-brand-50', 'dark:bg-gray-700');
-                activeBtn.classList.remove('text-gray-600', 'dark:text-gray-300');
-            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleDarkMode() {
-            const html = document.documentElement;
-            html.classList.toggle('dark');
+            document.documentElement.classList.toggle('dark');
             const icon = document.getElementById('theme-icon');
-            if (html.classList.contains('dark')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
+            icon.className = document.documentElement.classList.contains('dark') ? 'fa-solid fa-sun text-lg' : 'fa-solid fa-moon text-lg';
         }
 
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
+        function copyToClipboard(id) {
+            const el = document.getElementById(id);
+            el.select();
+            navigator.clipboard.writeText(el.value);
+        }
+
+        // Text Analysis Logic
         function analyzeText() {
-            const text = document.getElementById('text-input').value;
-            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-            const chars = text.length;
-            const sentences = text.trim() ? text.split(/[.!?]+/).filter(Boolean).length : 0;
-            const readTime = Math.ceil(words / 200);
+            const val = document.getElementById('text-input').value;
+            const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+            const chars = val.length;
+            const sentences = val.trim() ? val.split(/[.!?]+/).filter(Boolean).length : 0;
+            const readtime = Math.ceil(words / 200);
 
             document.getElementById('stat-words').innerText = words;
             document.getElementById('stat-chars').innerText = chars;
             document.getElementById('stat-sentences').innerText = sentences;
-            document.getElementById('stat-readtime').innerText = readTime + 'm';
+            document.getElementById('stat-readtime').innerText = readtime + 'm';
         }
 
-        function copyToClipboard(elementId) {
-            const el = document.getElementById(elementId);
-            el.select();
-            navigator.clipboard.writeText(el.value);
+        function convertText(mode) {
+            const el = document.getElementById('text-input');
+            let val = el.value;
+            if (!val) return;
+
+            if (mode === 'uppercase') el.value = val.toUpperCase();
+            else if (mode === 'lowercase') el.value = val.toLowerCase();
+            else if (mode === 'title') el.value = val.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+            else if (mode === 'camel') el.value = val.replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => index === 0 ? word.toLowerCase() : word.toUpperCase()).replace(/\s+/g, '');
+            else if (mode === 'slug') el.value = val.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+            
+            analyzeText();
         }
+
+        // Unit Converter Logic
+        function convertUnits() {
+            const fromVal = parseFloat(document.getElementById('unit-from-val').value) || 0;
+            const fromType = document.getElementById('unit-from-type').value;
+            const toType = document.getElementById('unit-to-type').value;
+            
+            let meters = fromVal;
+            if (fromType === 'km') meters = fromVal * 1000;
+            if (fromType === 'ft') meters = fromVal * 0.3048;
+            if (fromType === 'mi') meters = fromVal * 1609.34;
+
+            let result = meters;
+            if (toType === 'km') result = meters / 1000;
+            if (toType === 'ft') result = meters / 0.3048;
+            if (toType === 'mi') result = meters / 1609.34;
+
+            document.getElementById('unit-to-val').value = result.toFixed(4);
+        }
+
+        // Password Generator Logic
+        function generatePassword() {
+            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+            let pass = "";
+            for (let i = 0; i < 16; i++) {
+                pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('pass-output').value = pass;
+        }
+
+        // Initialize defaults on load
+        convertUnits();
     </script>
 </body>
 </html>
